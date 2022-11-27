@@ -1,4 +1,4 @@
-package com.example.food_app
+package com.example.food_app.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.food_app.BuildConfig
+import com.example.food_app.R
 import com.example.food_app.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.i("API key", BuildConfig.API_KEY )
+        Log.i("API key", BuildConfig.API_KEY)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
