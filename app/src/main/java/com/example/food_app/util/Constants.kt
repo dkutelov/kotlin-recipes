@@ -1,4 +1,4 @@
-package com.example.food_app
+package com.example.food_app.util
 
 class Constants {
 
