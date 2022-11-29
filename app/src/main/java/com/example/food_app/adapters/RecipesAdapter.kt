@@ -2,10 +2,12 @@ package com.example.food_app.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.food_app.databinding.RecipesRowLayoutBinding
 import com.example.food_app.models.FoodRecipes
 import com.example.food_app.models.Result
+import com.example.food_app.util.RecipesDiffUtil
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
@@ -34,8 +36,8 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentResult = recipes[position]
-        holder.bind(currentResult)
+        val currentRecipe = recipes[position]
+        holder.bind(currentRecipe)
     }
 
     override fun getItemCount(): Int {
@@ -43,7 +45,11 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
     }
 
     fun setData(newData: FoodRecipes) {
+        val recipesDiffUtil = RecipesDiffUtil(recipes, newData.results) //Api data has result field
+        val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
         recipes = newData.results
-        notifyDataSetChanged()
+
+        diffUtilResult.dispatchUpdatesTo(this)
+        //notifyDataSetChanged()
     }
 }

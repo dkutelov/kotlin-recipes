@@ -12,7 +12,9 @@ import com.example.food_app.BuildConfig
 import com.example.food_app.R
 import com.example.food_app.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -20,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.i("API key", BuildConfig.API_KEY)
+        //Log.i("API key", BuildConfig.API_KEY)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

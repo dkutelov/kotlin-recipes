@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="result"
             type="com.example.food_app.models.Result" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,12 +39,13 @@
                     android:id="@+id/recipe_image_view"
                     android:layout_width="200dp"
                     android:layout_height="0dp"
+                    android:contentDescription="@string/recipe_image"
                     android:scaleType="centerCrop"
+                    loadImageFromUrl="@{result.image}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars"
-                    android:contentDescription="@string/recipe_image" />
+                    tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/title_text_view"
@@ -54,7 +57,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/courgette"
                     android:maxLines="2"
-                    android:text="@string/lorem_ipsum"
+                    android:text="@{result.title}"
                     android:textColor="@color/darker"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -70,7 +73,7 @@
                     android:layout_marginTop="12dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    android:text="@string/lorem_ipsum_2"
+                    android:text="@{result.summary}"
                     android:textColor="@color/darkGray"
                     app:layout_constraintEnd_toEndOf="@+id/title_text_view"
                     app:layout_constraintStart_toStartOf="@+id/title_text_view"
@@ -95,7 +98,7 @@
                     android:id="@+id/heart_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/_100"
+                    setNumberOfLikes="@{result.aggregateLikes}"
                     android:textAlignment="center"
                     android:textColor="@color/red"
                     app:layout_constraintStart_toStartOf="@id/description_text_view"
@@ -118,17 +121,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:text="@string/_100"
+                    setNumberOfMinutes="@{result.readyInMinutes}"
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
                     app:layout_constraintStart_toEndOf="@+id/heart_text_view"
                     app:layout_constraintTop_toTopOf="@id/heart_text_view" />
 
-
                 <ImageView
                     android:id="@+id/vegan_image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/clock_icon"
+                    android:contentDescription="@string/vegan_icon"
+                    applyVeganColor="@{result.vegan}"
                     app:layout_constraintEnd_toEndOf="@+id/vegan_text_view"
                     app:layout_constraintStart_toStartOf="@+id/vegan_text_view"
                     app:layout_constraintTop_toTopOf="@id/heart_image_view"
@@ -139,8 +143,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:text="@string/_100"
+                    android:text="@string/vegan"
                     android:textAlignment="center"
+                    applyVeganColor="@{result.vegan}"
                     app:layout_constraintStart_toEndOf="@+id/clock_text_view"
                     app:layout_constraintTop_toTopOf="@id/clock_text_view" />
 
